@@ -1,0 +1,14 @@
+{
+    "total_raw": 286882,
+    "total_clean": 286457,
+    "duplicates_removed": 425,
+    "classes": {
+        "0": 170228,
+        "1": 116229
+    },
+    "sources": {
+        "phiusiil": 235370,
+        "dmoz": 35378,
+        "urlhaus": 15709
+    }
+}

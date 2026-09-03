@@ -1,0 +1,310 @@
+@import "tailwindcss";
+
+:root {
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --ease: cubic-bezier(.22,1,.36,1);
+  --ease-fast: cubic-bezier(.4,0,.2,1);
+  --dur-1: 140ms;
+  --dur-2: 260ms;
+  --dur-3: 420ms;
+  --font-display: var(--font-poppins), 'Inter', sans-serif;
+  --font-body: var(--font-inter), 'Inter', sans-serif;
+  --font-mono: var(--font-mono), monospace;
+}
+
+html.lang-ar { 
+  --font-display: var(--font-cairo), 'Inter', sans-serif; 
+  --font-body: var(--font-cairo), 'Inter', sans-serif; 
+}
+
+/* Base Light/Dark Defaults */
+:root[data-theme="dark"] {
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border: rgba(255,255,255,0.08);
+  --border-strong: rgba(255,255,255,0.15);
+  --safe: #10b981;
+  --safe-bg: rgba(16,185,129,0.15);
+  --danger: #ef4444;
+  --danger-bg: rgba(239,68,68,0.15);
+  --warning: #f59e0b;
+  --warning-bg: rgba(245,158,11,0.15);
+  --shadow-elev: 0 20px 60px -20px rgba(0,0,0,0.8);
+  --scrim: rgba(0,0,0,0.8);
+}
+
+:root[data-theme="light"] {
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --border: rgba(0,0,0,0.1);
+  --border-strong: rgba(0,0,0,0.2);
+  --safe: #059669;
+  --safe-bg: rgba(5,150,105,0.15);
+  --danger: #dc2626;
+  --danger-bg: rgba(220,38,38,0.15);
+  --warning: #d97706;
+  --warning-bg: rgba(217,119,6,0.15);
+  --shadow-elev: 0 20px 50px -24px rgba(0,0,0,0.3);
+  --scrim: rgba(255,255,255,0.7);
+}
+
+/* Identities */
+
+/* 1. Cyber Intelligence (Premium Emerald Cybersecurity) */
+:root[data-theme="dark"][data-identity="cyber"] {
+  --bg: #030a08;
+  --surface: #071510;
+  --surface-elevated: #0a1f18;
+  --surface-glass: rgba(10, 31, 24, 0.7);
+  --accent-1: #10b981; /* Emerald 500 */
+  --accent-2: #34d399; /* Emerald 400 */
+  --accent-3: #6ee7b7; /* Emerald 300 */
+  --border: rgba(16, 185, 129, 0.15);
+  --border-strong: rgba(16, 185, 129, 0.3);
+  --shadow-elev: 0 30px 80px -20px rgba(16, 185, 129, 0.15), 0 0 40px -10px rgba(16, 185, 129, 0.05);
+  --accent-grad: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+}
+
+:root[data-theme="light"][data-identity="cyber"] {
+  --bg: #f5fbfa;
+  --surface: #ffffff;
+  --surface-elevated: #f0f9f6;
+  --surface-glass: rgba(255, 255, 255, 0.85);
+  --text-primary: #022c22;
+  --text-secondary: #064e3b;
+  --text-muted: #0f766e;
+  --accent-1: #059669; /* Emerald 600 */
+  --accent-2: #047857; /* Emerald 700 */
+  --accent-3: #065f46; /* Emerald 800 */
+  --border: rgba(5, 150, 105, 0.12);
+  --border-strong: rgba(5, 150, 105, 0.25);
+  --shadow-elev: 0 25px 60px -20px rgba(5, 150, 105, 0.15);
+  --accent-grad: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+/* 2. Quantum Security (Dark Indigo + Electric Blue + Cyan) */
+:root[data-theme="dark"][data-identity="quantum"] {
+  --bg: #030014;
+  --bg-radial: radial-gradient(120% 100% at 15% -10%, rgba(0,229,255,.16) 0%, rgba(3,0,20,0) 45%), radial-gradient(90% 80% at 100% 0%, rgba(41,98,255,.15) 0%, rgba(3,0,20,0) 50%);
+  --surface: #0a0524;
+  --surface-elevated: #110938;
+  --surface-glass: rgba(10,5,36,.65);
+  --accent-1: #00e5ff;
+  --accent-2: #2962ff;
+  --accent-grad: linear-gradient(135deg, #00e5ff 0%, #2962ff 100%);
+}
+:root[data-theme="light"][data-identity="quantum"] {
+  --bg: #e0e7ff;
+  --bg-radial: radial-gradient(120% 100% at 15% -10%, rgba(0,188,212,.15) 0%, rgba(224,231,255,0) 45%);
+  --surface: #c7d2fe;
+  --surface-elevated: #a5b4fc;
+  --surface-glass: rgba(199,210,254,.7);
+  --accent-1: #00838f;
+  --accent-2: #1d4ed8;
+  --accent-grad: linear-gradient(135deg, #00838f 0%, #1d4ed8 100%);
+}
+
+/* 3. Sentinel (Deep Blue + Emerald + Controlled Red) - Fulfilling user request */
+:root[data-theme="dark"][data-identity="sentinel"] {
+  --bg: #0d1117;
+  --bg-radial: radial-gradient(circle at top right, rgba(46,160,67,.15) 0%, transparent 40%), radial-gradient(circle at bottom left, rgba(218,54,51,.1) 0%, transparent 40%);
+  --surface: #161b22;
+  --surface-elevated: #21262d;
+  --surface-glass: rgba(22,27,34,.75);
+  --accent-1: #2ea043;
+  --accent-2: #388bfd;
+  --accent-grad: linear-gradient(135deg, #2ea043 0%, #388bfd 100%);
+}
+:root[data-theme="light"][data-identity="sentinel"] {
+  --bg: #eef2f5;
+  --bg-radial: radial-gradient(circle at top right, rgba(46,160,67,.1) 0%, transparent 40%);
+  --surface: #dce3e9;
+  --surface-elevated: #c8d4df;
+  --surface-glass: rgba(220,227,233,.8);
+  --accent-1: #1f883d;
+  --accent-2: #0969da;
+  --accent-grad: linear-gradient(135deg, #1f883d 0%, #0969da 100%);
+}
+
+/* 4. Research Lab (Slate + Blue + Teal) */
+:root[data-theme="dark"][data-identity="research"] {
+  --bg: #0f172a;
+  --bg-radial: radial-gradient(ellipse at top, rgba(13,148,136,0.15), transparent 50%);
+  --surface: #1e293b;
+  --surface-elevated: #334155;
+  --surface-glass: rgba(30,41,59,.75);
+  --accent-1: #2dd4bf;
+  --accent-2: #818cf8;
+  --accent-grad: linear-gradient(135deg, #2dd4bf 0%, #818cf8 100%);
+}
+:root[data-theme="light"][data-identity="research"] {
+  --bg: #f1f5f9;
+  --bg-radial: radial-gradient(ellipse at top, rgba(13,148,136,0.1), transparent 50%);
+  --surface: #e2e8f0;
+  --surface-elevated: #cbd5e1;
+  --surface-glass: rgba(226,232,240,.8);
+  --accent-1: #0f766e;
+  --accent-2: #4f46e5;
+  --accent-grad: linear-gradient(135deg, #0f766e 0%, #4f46e5 100%);
+}
+
+
+@theme inline {
+  --color-background: var(--bg);
+  --color-foreground: var(--text-primary);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-glass: var(--surface-glass);
+  
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  
+  --color-accent-1: var(--accent-1);
+  --color-accent-2: var(--accent-2);
+  
+  --color-safe: var(--safe);
+  --color-safe-bg: var(--safe-bg);
+  --color-danger: var(--danger);
+  --color-danger-bg: var(--danger-bg);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+}
+
+body {
+  background: var(--bg-radial), var(--bg);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  transition: background-color var(--dur-3) var(--ease), color var(--dur-3) var(--ease);
+}
+
+/* RTL Text Alignment ONLY (No Layout Flipping) */
+.lang-ar .text-align-dynamic {
+  text-align: right;
+}
+.lang-ar .flex-row-dynamic {
+  flex-direction: row-reverse;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.glass-panel {
+  background: var(--surface-glass);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 24px -12px rgba(0,0,0,0.3);
+}
+
+.btn-primary {
+  background: var(--accent-grad);
+  color: #fff;
+  box-shadow: 0 8px 24px -8px var(--accent-1);
+  transition: all var(--dur-2) var(--ease);
+}
+.btn-primary:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 12px 32px -8px var(--accent-1);
+}
+.btn-primary:active {
+  transform: scale(0.96);
+}
+
+.text-gradient {
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Animations & Luxurious Effects */
+
+@keyframes pageFade {
+  from { opacity: 0; transform: translateY(10px) scale(0.99); }
+  to { opacity: 1; transform: none; }
+}
+.animate-page-fade {
+  animation: pageFade var(--dur-3) var(--ease);
+}
+
+@keyframes rotateOrb {
+  to { transform: rotate(360deg); }
+}
+.animate-rotate-orb {
+  animation: rotateOrb 1.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+  @keyframes pulseDot {
+    0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-1) 40%, transparent); transform: scale(1); }
+    50% { box-shadow: 0 0 0 10px color-mix(in srgb, var(--accent-1) 0%, transparent); transform: scale(1.05); }
+  }
+.animate-pulse-dot {
+  animation: pulseDot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Hacking / Danger Effects */
+@keyframes glitch {
+  0% { transform: translate(0); filter: hue-rotate(0deg); }
+  20% { transform: translate(-2px, 1px); filter: hue-rotate(90deg); }
+  40% { transform: translate(-1px, -1px); filter: hue-rotate(0deg); }
+  60% { transform: translate(2px, 1px); filter: hue-rotate(180deg); }
+  80% { transform: translate(1px, -1px); filter: hue-rotate(0deg); }
+  100% { transform: translate(0); filter: hue-rotate(0deg); }
+}
+.danger-glitch {
+  animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+.animate-scanline::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.1) 50%, transparent);
+  animation: scanline 2s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes radarSweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-radar {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 0deg, transparent 70%, var(--accent-1) 100%);
+  animation: radarSweep 3s linear infinite;
+  opacity: 0.15;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateY(-20px) scale(0.9); }
+  to { opacity: 1; transform: none; }
+}
+.animate-toast {
+  animation: toastIn var(--dur-2) var(--ease);
+}

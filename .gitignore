@@ -1,0 +1,18 @@
+﻿node_modules/
+.next/
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+ml/*.csv
+ml/*.txt
+!ml/phishguard_model.joblib
+
+# Private Vault for user (DO NOT UPLOAD)
+_PRIVATE_VAULT_/

@@ -1,0 +1,9 @@
+{
+    "external_validation": {
+        "source": "URLHaus",
+        "type": "Malware/Phishing",
+        "size": 5000,
+        "recall": 0.9998
+    },
+    "temporal_validation": "Not possible (PhiUSIIL dataset lacks chronological timestamps per URL)"
+}
