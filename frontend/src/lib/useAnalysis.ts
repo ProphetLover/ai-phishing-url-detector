@@ -47,7 +47,8 @@ export function useAnalysis() {
     setScanStep(1); // URL Received
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/analyze";
+      const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+      const apiUrl = baseUrl.endsWith('/api/analyze') ? baseUrl : (baseUrl.endsWith('/') ? baseUrl + 'api/analyze' : baseUrl + '/api/analyze');
       
       // Simulate step progress for visual effect
       setTimeout(() => setScanStep(2), 400); // Feature Extraction
